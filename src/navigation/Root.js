@@ -4,17 +4,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import AntDesign from 'react-native-vector-icons/AntDesign'
 import HomeScreen from '../screens/HomeScreen'
-// import CounterScreen from '../screens/CounterScreen'
+import CounterScreen from '../screens/CounterScreen'
 import MemberListScreen from '../screens/memberScreens/MemberListScreen'
 import ImagesScreen from '../screens/ImagesScreen'
-import { TouchableOpacity, View } from 'react-native'
-// import AnimationScreen from '../screens/AnimationScreen'
-// import ExtrasScreen from '../screens/ExtrasScreen'
-// import ShowMemberScreen from '../screens/memberScreens/ShowMemberScreen'
-// import AddMemberScreen from '../screens/memberScreens/AddMemberScreen'
-// import EditMemberScreen from '../screens/memberScreens/EditMemberScreen'
+import AnimationScreen from '../screens/AnimationScreen'
+import ExtrasScreen from '../screens/ExtrasScreen'
+import ShowMemberScreen from '../screens/memberScreens/ShowMemberScreen'
+import AddMemberScreen from '../screens/memberScreens/AddMemberScreen'
+import EditMemberScreen from '../screens/memberScreens/EditMemberScreen'
 
 const Stack = createStackNavigator()
 
@@ -31,11 +29,23 @@ const HomeStack = () => {
           headerTitle: 'Home',
         }}
       />
-      {/* <Stack.Screen name="Counters" component={CounterScreen} />
-      <Stack.Screen name="Members" component={MemberListScreen} />
+      <Stack.Screen
+        name="Counters"
+        component={CounterScreen}
+        options={{
+          headerTitle: 'Counters',
+        }}
+      />
+      <Stack.Screen
+        name="Members"
+        component={MemberListScreen}
+        options={{
+          headerTitle: 'Members',
+        }}
+      />
       <Stack.Screen name="Images" component={ImagesScreen} />
       <Stack.Screen name="Animation" component={AnimationScreen} />
-      <Stack.Screen name="Extras" component={ExtrasScreen} /> */}
+      <Stack.Screen name="Extras" component={ExtrasScreen} />
     </Stack.Navigator>
   )
 }
@@ -51,16 +61,11 @@ const MemberStack = ({ navigation }) => {
         component={MemberListScreen}
         options={{
           headerTitle: 'Members',
-          headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('AddMember')}>
-              <AntDesign style={{ paddingRight: 15 }} name="pluscircle" size={25} />
-            </TouchableOpacity>
-          ),
         }}
       />
-      {/* <Stack.Screen name="ShowMember" component={ShowMemberScreen} />
+      <Stack.Screen name="ShowMember" component={ShowMemberScreen} />
       <Stack.Screen name="AddMember" component={AddMemberScreen} />
-      <Stack.Screen name="EditMember" component={EditMemberScreen} /> */}
+      <Stack.Screen name="EditMember" component={EditMemberScreen} />
     </Stack.Navigator>
   )
 }

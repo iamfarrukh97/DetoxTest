@@ -1,32 +1,28 @@
-import React, { useState} from 'react';
-import { ScrollView, SafeAreaView} from 'react-native';
-import { Button} from 'react-native-elements';
-import MemberFormInputFields from './MemberFormInputFields';
-import MemberFormDateFields from './MemberFormDateFields';
-import MemberFormTimeFields from './MemberFormTimeFields';
-import MemberFormPickerFields from './MemberFormPickerFields';
-import MemberFormCalendarFields from './MemberFormCalendarFields';
+import React, { useState } from 'react'
+import { ScrollView, SafeAreaView } from 'react-native'
+import { Button } from '@rneui/themed'
+import MemberFormInputFields from './MemberFormInputFields'
+import MemberFormDateFields from './MemberFormDateFields'
+import MemberFormTimeFields from './MemberFormTimeFields'
+import MemberFormPickerFields from './MemberFormPickerFields'
+import MemberFormCalendarFields from './MemberFormCalendarFields'
 
-const emailRegex = new RegExp(/^\S+@\S+\.\S+$/);
+const emailRegex = new RegExp(/^\S+@\S+\.\S+$/)
 
-const MemberForm = ({ onSubmit, initialValues}) => {
-  const [name, setName] = useState(initialValues.name);
-  const [surname, setSurname] = useState(initialValues.surname);
-  const [email, setEmail] = useState(initialValues.email);
-  const [dateOfBirth, setDateOfBirth] = useState(initialValues.dateOfBirth);
-  const [addressLineOne, setAddressLineOne] = useState(
-    initialValues.addressLineOne,
-  );
-  const [addressLineTwo, setAddressLineTwo] = useState(
-    initialValues.addressLineTwo,
-  );
-  const [city, setCity] = useState(initialValues.city);
-  const [postcode, setPostcode] = useState(initialValues.postcode);
-  const [country, setCountry] = useState(initialValues.country);
-  const [startDate, setStartDate] = useState(initialValues.startDate);
-  const [startTime, setStartTime] = useState(initialValues.startTime);
-  const [startDay, setStartDay] = useState(initialValues.startDay);
-  const [fieldsOnError, setFieldsOnError] = useState([]);
+const MemberForm = ({ onSubmit, initialValues }) => {
+  const [name, setName] = useState(initialValues.name)
+  const [surname, setSurname] = useState(initialValues.surname)
+  const [email, setEmail] = useState(initialValues.email)
+  const [dateOfBirth, setDateOfBirth] = useState(initialValues.dateOfBirth)
+  const [addressLineOne, setAddressLineOne] = useState(initialValues.addressLineOne)
+  const [addressLineTwo, setAddressLineTwo] = useState(initialValues.addressLineTwo)
+  const [city, setCity] = useState(initialValues.city)
+  const [postcode, setPostcode] = useState(initialValues.postcode)
+  const [country, setCountry] = useState(initialValues.country)
+  const [startDate, setStartDate] = useState(initialValues.startDate)
+  const [startTime, setStartTime] = useState(initialValues.startTime)
+  const [startDay, setStartDay] = useState(initialValues.startDay)
+  const [fieldsOnError, setFieldsOnError] = useState([])
 
   const handleSubmit = () => {
     const valuesToSubmit = {
@@ -42,28 +38,28 @@ const MemberForm = ({ onSubmit, initialValues}) => {
       country,
       startDate,
       startTime,
-    };
-
-    const errors = Object.keys(valuesToSubmit).filter((key) => {
-      // not required
-      if (key === 'addressLineTwo') {
-        return false;
-      }
-
-      return !valuesToSubmit[key];
-    });
-
-    if (errors.length > 0) {
-      return setFieldsOnError(errors);
     }
 
-    setFieldsOnError([]);
-    onSubmit(valuesToSubmit);
-  };
+    const errors = Object.keys(valuesToSubmit).filter(key => {
+      // not required
+      if (key === 'addressLineTwo') {
+        return false
+      }
+
+      return !valuesToSubmit[key]
+    })
+
+    if (errors.length > 0) {
+      return setFieldsOnError(errors)
+    }
+
+    setFieldsOnError([])
+    onSubmit(valuesToSubmit)
+  }
 
   return (
     <ScrollView>
-      <SafeAreaView style={{margin: 5}}>
+      <SafeAreaView style={{ margin: 5 }}>
         <MemberFormInputFields
           labelAndPlaceholder="Name"
           inputValue={name}
@@ -103,7 +99,7 @@ const MemberForm = ({ onSubmit, initialValues}) => {
         <MemberFormInputFields
           labelAndPlaceholder="Email"
           inputValue={email}
-          inputChangeText={(email) => setEmail(email)}
+          inputChangeText={email => setEmail(email)}
           editableStatus={true}
           isFailingValidation={!emailRegex.test(email)}
           errorMessage="Please enter a valid email"
@@ -112,9 +108,7 @@ const MemberForm = ({ onSubmit, initialValues}) => {
         <MemberFormInputFields
           labelAndPlaceholder="Address Line One"
           inputValue={addressLineOne}
-          inputChangeText={(addressLineOne) =>
-            setAddressLineOne(addressLineOne)
-          }
+          inputChangeText={addressLineOne => setAddressLineOne(addressLineOne)}
           editableStatus={true}
           isFailingValidation={!addressLineOne}
           errorMessage="Address line one is required"
@@ -123,15 +117,13 @@ const MemberForm = ({ onSubmit, initialValues}) => {
         <MemberFormInputFields
           labelAndPlaceholder="Address Line Two"
           inputValue={addressLineTwo}
-          inputChangeText={(addressLineTwo) =>
-            setAddressLineTwo(addressLineTwo)
-          }
+          inputChangeText={addressLineTwo => setAddressLineTwo(addressLineTwo)}
           editableStatus={true}
         />
         <MemberFormInputFields
           labelAndPlaceholder="City"
           inputValue={city}
-          inputChangeText={(city) => setCity(city)}
+          inputChangeText={city => setCity(city)}
           editableStatus={true}
           isFailingValidation={!city}
           errorMessage="City is required"
@@ -140,7 +132,7 @@ const MemberForm = ({ onSubmit, initialValues}) => {
         <MemberFormInputFields
           labelAndPlaceholder="Postcode"
           inputValue={postcode}
-          inputChangeText={(postcode) => setPostcode(postcode)}
+          inputChangeText={postcode => setPostcode(postcode)}
           editableStatus={true}
           isFailingValidation={!postcode}
           errorMessage="Postcode is required"
@@ -176,8 +168,8 @@ const MemberForm = ({ onSubmit, initialValues}) => {
         <Button title="Save Member" onPress={handleSubmit} />
       </SafeAreaView>
     </ScrollView>
-  );
-};
+  )
+}
 
 MemberForm.defaultProps = {
   initialValues: {
@@ -193,6 +185,6 @@ MemberForm.defaultProps = {
     startDate: '',
     startDay: '',
   },
-};
+}
 
-export default MemberForm;
+export default MemberForm

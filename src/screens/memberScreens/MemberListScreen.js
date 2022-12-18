@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useLayoutEffect } from 'react'
 import {
   FlatList,
   SafeAreaView,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import MemberContext from '../../context/MemberContext'
 import ConfirmModal from '../../components/modalComponents/ConfirmModal'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -36,7 +37,15 @@ const MemberListScreen = ({ navigation }) => {
   const tapDeleteMember = member => {
     acceptDeletion(member)
   }
-
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('AddMember')}>
+          <AntDesign style={{ paddingRight: 15 }} name="pluscircle" size={25} />
+        </TouchableOpacity>
+      ),
+    })
+  }, [navigation])
   const renderList = () => (
     <FlatList
       data={data}

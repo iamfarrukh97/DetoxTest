@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
-import { Text } from 'react-native-elements';
+import React, { useEffect, useState } from 'react'
+import { View, StyleSheet, TextInput } from 'react-native'
+import { Text } from '@rneui/themed'
 
 const MemberFormInputFields = ({
   labelAndPlaceholder,
@@ -11,24 +11,24 @@ const MemberFormInputFields = ({
   errorMessage,
   isInError,
 }) => {
-  const [isErrorState, setIsErrorState] = useState(isInError);
+  const [isErrorState, setIsErrorState] = useState(isInError)
 
   useEffect(() => {
-    setIsErrorState(isInError);
-  }, [isInError]);
+    setIsErrorState(isInError)
+  }, [isInError])
 
   const handleFocus = () => {
     if (isErrorState) {
-      inputChangeText('');
-      setIsErrorState(false);
+      inputChangeText('')
+      setIsErrorState(false)
     }
-  };
+  }
 
   const handleBlur = () => {
     if (isFailingValidation) {
-      setIsErrorState(true);
+      setIsErrorState(true)
     }
-  };
+  }
 
   return (
     <View pointerEvents={editableStatus ? 'auto' : 'none'}>
@@ -44,8 +44,8 @@ const MemberFormInputFields = ({
         autoCorrect={false}
       />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   label: {
@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
     color: 'red',
     borderColor: 'red',
   },
-});
+})
 
 MemberFormInputFields.defaultProps = {
   isFailingValidation: false,
   errorMessage: null,
   isInError: false,
-};
+}
 
-export default MemberFormInputFields;
+export default MemberFormInputFields

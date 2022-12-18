@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Text } from 'react-native-elements';
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import { Text } from '@rneui/themed'
 
 const MemberFields = ({ labelText, fieldValue }) => {
   return (
@@ -8,8 +8,8 @@ const MemberFields = ({ labelText, fieldValue }) => {
       <Text style={styles.label}>{labelText}</Text>
       <Text style={styles.field}>{fieldValue}</Text>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   label: {
@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 5,
   },
-});
+})
 
-export default MemberFields;
+export default MemberFields
