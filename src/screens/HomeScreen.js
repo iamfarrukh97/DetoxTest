@@ -6,16 +6,19 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <HomeComponents
+        testID="Counters"
         text="Counters"
         background="#B2FADE"
         navigationScreen={(onPress = () => navigation.navigate('Counters'))}
       />
       <HomeComponents
+        testID="Member_List"
         text="Member List"
         background="#FAB7B2"
         navigationScreen={(onPress = () => navigation.navigate('Members'))}
       />
       <HomeComponents
+        testID="Cities"
         text="Cities"
         background="#D6FAB2"
         navigationScreen={(onPress = () => navigation.navigate('Images'))}
