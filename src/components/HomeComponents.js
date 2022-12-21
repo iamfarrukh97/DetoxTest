@@ -2,9 +2,9 @@ import React from 'react'
 import { Text, StyleSheet, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-const HomeComponents = ({ text, background, navigationScreen }) => {
+const HomeComponents = ({ text, background, navigationScreen, testID }) => {
   return (
-    <TouchableOpacity onPress={navigationScreen}>
+    <TouchableOpacity onPress={navigationScreen} testID={testID}>
       <View style={styles.sections} backgroundColor={background}>
         <Text style={styles.text}>{text}</Text>
       </View>
