@@ -1,37 +1,41 @@
-import React from 'react';
-import { Text, View, StyleSheet, ScrollView, FlatList, Image } from 'react-native';
-import { europe, usacanada, asia } from '../data/countryData';
+import React from 'react'
+import { Text, View, StyleSheet, ScrollView, FlatList, Image } from 'react-native'
+import { europe, usacanada, asia } from '../data/countryData'
 
-const ImageComponents = ({title}) => {
-  const cities =
-    title === 'Europe' ? europe : title === 'Asia' ? asia : usacanada;
+const ImageComponents = ({ title, testID }) => {
+  const cities = title === 'Europe' ? europe : title === 'Asia' ? asia : usacanada
 
   return (
     <ScrollView>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>{title}</Text>
+        <Text style={styles.headerText} testID={`continent-title-${testID}`}>
+          {title}
+        </Text>
       </View>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(city) => city.name}
+        keyExtractor={city => city.name}
         data={cities}
-        renderItem={({item}) => {
+        renderItem={({ item, index }) => {
           return (
             <View style={styles.imageContainer}>
-              <Text style={styles.imageText}>{item.name}</Text>
+              <Text style={styles.imageText} testID={`continent-text-${testID}-${index}`}>
+                {item.name}
+              </Text>
               <Image
                 style={styles.image}
                 resizeMode={'cover'}
                 source={item.imagePath}
+                testID={`continent-image-${testID}-${index}`}
               />
             </View>
-          );
+          )
         }}
       />
     </ScrollView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
     height: 60,
     paddingTop: 15,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     elevation: 2,
     position: 'relative',
@@ -65,6 +69,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 5,
   },
-});
+})
 
-export default ImageComponents;
+export default ImageComponents

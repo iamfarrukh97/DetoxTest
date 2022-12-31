@@ -43,6 +43,7 @@ const HomeStack = () => {
           headerTitle: 'Members',
         }}
       />
+      <Stack.Screen name="AddMember" component={AddMemberScreen} />
       <Stack.Screen name="Images" component={ImagesScreen} />
       <Stack.Screen name="Animation" component={AnimationScreen} />
       <Stack.Screen name="Extras" component={ExtrasScreen} />
@@ -85,6 +86,7 @@ const BottomTab = () => {
         options={{
           title: 'Home',
           tabBarIcon: () => <FontAwesome5 name="home" size={20} />,
+          tabBarTestID: 'HomeFlow',
         }}
       />
       <Tab.Screen
@@ -94,6 +96,7 @@ const BottomTab = () => {
           title: 'Cities',
           headerShown: true,
           tabBarIcon: () => <FontAwesome5 name="city" size={20} />,
+          tabBarTestID: 'ImagesFlow',
         }}
       />
       <Tab.Screen
@@ -102,6 +105,7 @@ const BottomTab = () => {
         options={{
           title: 'Members',
           tabBarIcon: () => <MaterialCommunityIcons name="wallet-membership" size={20} />,
+          tabBarTestID: 'MembersFlow',
         }}
       />
     </Tab.Navigator>

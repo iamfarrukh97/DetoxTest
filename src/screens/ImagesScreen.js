@@ -6,9 +6,9 @@ const ImagesScreen = () => {
   return (
     <SafeAreaView style={{ marginBottom: 50 }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ImageComponents title="Europe" />
-        <ImageComponents title="USA / Canada" />
-        <ImageComponents title="Asia" />
+        <ImageComponents title="Europe" testID={'europe'} />
+        <ImageComponents title="USA / Canada" testID={'usa/canada'} />
+        <ImageComponents title="Asia" testID={'asia'} />
       </ScrollView>
     </SafeAreaView>
   )
