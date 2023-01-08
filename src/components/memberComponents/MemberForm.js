@@ -58,7 +58,7 @@ const MemberForm = ({ onSubmit, initialValues }) => {
   }
 
   return (
-    <ScrollView>
+    <ScrollView testID="member-form">
       <SafeAreaView style={{ margin: 5 }}>
         <MemberFormInputFields
           labelAndPlaceholder="Name"
@@ -68,6 +68,7 @@ const MemberForm = ({ onSubmit, initialValues }) => {
           isFailingValidation={!name}
           errorMessage="Please enter a valid name"
           isInError={fieldsOnError.includes('name')}
+          testID="name"
         />
 
         <MemberFormInputFields
@@ -78,6 +79,7 @@ const MemberForm = ({ onSubmit, initialValues }) => {
           isFailingValidation={!surname}
           errorMessage="Please enter a valid surname"
           isInError={fieldsOnError.includes('surname')}
+          testID="surname"
         />
         <MemberFormDateFields
           labelAndPlaceholder="Date of Birth"
@@ -154,6 +156,7 @@ const MemberForm = ({ onSubmit, initialValues }) => {
           isFailingValidation={!startDate}
           errorMessage="Start date is required"
           isInError={fieldsOnError.includes('startDate') && !startDate}
+          testID="startdate"
         />
         <MemberFormTimeFields
           labelAndPlaceholder="Start Time"
