@@ -22,6 +22,7 @@ const MemberFormDateFields = ({
   isFailingValidation,
   errorMessage,
   isInError,
+  testID,
 }) => {
   const [date, setDate] = useState(inputValue || '')
   const [show, setShow] = useState(false)
@@ -64,6 +65,7 @@ const MemberFormDateFields = ({
           isFailingValidation={isFailingValidation}
           errorMessage={errorMessage}
           isInError={isError || isInError}
+          testID={testID}
         />
       </TouchableOpacity>
       {show && (
@@ -75,8 +77,9 @@ const MemberFormDateFields = ({
             is24Hour={true}
             minimumDate={new Date(yearMinusOneHundredAndTen, presentMonth, presentDay)}
             maximumDate={new Date(yearMinusEighteen, presentMonth, presentDay)}
-            display="default"
+            display="spinner"
             onChange={handleChange}
+            testID={testID}
           />
           {Platform.OS === 'ios' && (
             <View>
@@ -84,11 +87,13 @@ const MemberFormDateFields = ({
                 style={{ margin: 5 }}
                 title="Confirm"
                 onPress={() => handleConfirm(pickerDate)}
+                testID={`buttonConfirm-${testID}`}
               />
               <Button
                 style={{ margin: 5 }}
                 title="Cancel"
                 onPress={() => handleCancelChange()}
+                testID={`buttonCancel-${testID}`}
               />
             </View>
           )}

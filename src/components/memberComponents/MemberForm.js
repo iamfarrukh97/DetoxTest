@@ -88,6 +88,7 @@ const MemberForm = ({ onSubmit, initialValues }) => {
           isFailingValidation={!dateOfBirth}
           errorMessage="Please enter a valid date of birth"
           isInError={fieldsOnError.includes('dateOfBirth') && !dateOfBirth}
+          testID="dateOfBirth"
         />
         <MemberFormPickerFields
           labelAndPlaceholder="Start Day"
@@ -97,6 +98,7 @@ const MemberForm = ({ onSubmit, initialValues }) => {
           isFailingValidation={!dateOfBirth}
           errorMessage="Please enter a valid start day"
           isInError={fieldsOnError.includes('startDay') && !startDay}
+          testID="startDay"
         />
         <MemberFormInputFields
           labelAndPlaceholder="Email"
@@ -148,6 +150,7 @@ const MemberForm = ({ onSubmit, initialValues }) => {
           isFailingValidation={!country}
           errorMessage="Country is required"
           isInError={fieldsOnError.includes('country') && !country}
+          testID="country"
         />
         <MemberFormCalendarFields
           labelAndPlaceholder="Start Date"

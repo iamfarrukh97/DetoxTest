@@ -20,11 +20,34 @@ class Utlitieis {
       .atIndex(0)
       .tap()
   }
+  async softElementAssertion(mobileElement) {
+    try {
+      await expect(mobileElement).toBeVisible()
+      return true
+    } catch {
+      return false
+    }
+  }
   async softTextAssertion(mobileElement, text) {
     try {
       await expect(mobileElement).toHaveText(text)
     } catch (error) {
       return false
+    }
+  }
+
+  async selectPickerValue(picker, value, swipDirection) {
+    if (device.getPlatform() === 'ios') {
+      await picker.setColumnToValue(0, value)
+    } else {
+      await element(by.type('android.widget.Spinner')).tap()
+      const optionSelect = element(
+        by.type('android.widget.CheckedTextView').and(by.text(value)),
+      )
+      while ((await this.softElementAssertion(optionSelect)) === false) {
+        await element(by.type('android.widget.ListView')).swipe(swipDirection, 'slow')
+      }
+      await optionSelect.tap()
     }
   }
 }
